@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تماس با ما | تک‌استور</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Vazirmatn", "sans-serif"] },
+            colors: {
+              base: "#0A0A0F",
+              surface: "#12121A",
+              card: "#1A1A26",
+              border: "#2A2A3E",
+              accent: "#6366f1",
+              "accent-light": "#818cf8",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      * {
+        font-family: "Vazirmatn", sans-serif;
+      }
+      body {
+        background: #0a0a0f;
+        color: #e2e8f0;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #12121a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6366f1;
+        border-radius: 3px;
+      }
+      .glass-card {
+        background: rgba(26, 26, 38, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(99, 102, 241, 0.15);
+      }
+      .glow {
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+      }
+      .glow-sm {
+        box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+      }
+      .nav-link {
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background: #6366f1;
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: #818cf8;
+      }
+      .input-dark {
+        background: #12121a !important;
+        border-color: #2a2a3e !important;
+        color: #e2e8f0 !important;
+      }
+      .input-dark:focus {
+        border-color: #6366f1 !important;
+        outline: none;
+      }
+      .input-dark::placeholder {
+        color: #4b5563;
+      }
+      .badge-pulse {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+      .btn-primary {
+        background: #6366f1;
+        border-color: #6366f1;
+      }
+      .btn-primary:hover {
+        background: #4f46e5;
+        border-color: #4f46e5;
+      }
+      .toast-custom {
+        position: fixed;
+        top: 80px;
+        left: 20px;
+        z-index: 9999;
+        background: #1a1a26;
+        border: 1px solid #6366f1;
+        border-radius: 12px;
+        padding: 12px 20px;
+        color: #e2e8f0;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s;
+      }
+      .toast-custom.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stars {
+        color: #f59e0b;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <div id="toast" class="toast-custom">
+      <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+      <span id="toast-msg">پیام شما ارسال شد!</span>
+    </div>
+
+    <header class="sticky top-0 z-50 glass-card border-b border-[#2A2A3E]">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-2 cursor-pointer">
+            <a href="index.html"
+              ><div
+                class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center glow-sm"
+              >
+                <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+              </div>
+              <span class="text-xl font-bold gradient-text">تک‌استور</span></a
+            >
+          </div>
+          <nav
+            class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400"
+          >
+            <a href="index.html" class="nav-link">خانه</a>
+            <a href="shop.html" class="nav-link">فروشگاه</a>
+            <a href="category.html" class="nav-link">دسته‌بندی</a>
+            <a href="about.html" class="nav-link">درباره ما</a>
+            <a href="contact.html" class="nav-link active">تماس</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a
+              href="shop.html"
+              class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400"
+              ><i data-lucide="search" class="w-5 h-5"></i
+            ></a>
+            <a
+              href="cart.html"
+              class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400 relative"
+              ><i data-lucide="shopping-cart" class="w-5 h-5"></i
+              ><span
+                id="cart-badge"
+                class="absolute -top-1 -left-1 w-5 h-5 bg-indigo-600 rounded-full text-xs flex items-center justify-center text-white badge-pulse"
+                >3</span
+              ></a
+            >
+            <a
+              href="login.html"
+              class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400"
+              ><i data-lucide="user" class="w-5 h-5"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-[#2A2A3E] px-4 py-3 space-y-2"
+      >
+        <a
+          href="index.html"
+          class="block py-2 text-sm text-slate-400 hover:text-indigo-400"
+          onclick="toggleMobileMenu()"
+          >خانه</a
+        >
+        <a
+          href="shop.html"
+          class="block py-2 text-sm text-slate-400 hover:text-indigo-400"
+          onclick="toggleMobileMenu()"
+          >فروشگاه</a
+        >
+        <a
+          href="category.html"
+          class="block py-2 text-sm text-slate-400 hover:text-indigo-400"
+          onclick="toggleMobileMenu()"
+          >دسته‌بندی</a
+        >
+        <a
+          href="about.html"
+          class="block py-2 text-sm text-slate-400 hover:text-indigo-400"
+          onclick="toggleMobileMenu()"
+          >درباره ما</a
+        >
+        <a
+          href="contact.html"
+          class="block py-2 text-sm text-slate-400 hover:text-indigo-400"
+          onclick="toggleMobileMenu()"
+          >تماس</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+          <h1 class="text-3xl font-bold text-white mb-3">تماس با ما</h1>
+          <p class="text-slate-400">
+            در هر ساعتی از شبانه‌روز آماده پاسخگویی هستیم
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="glass-card rounded-2xl p-6 text-center">
+            <div
+              class="w-14 h-14 rounded-2xl bg-indigo-600/20 flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="phone" class="w-7 h-7 text-indigo-400"></i>
+            </div>
+            <div class="font-bold text-white mb-1">تلفن</div>
+            <div class="text-slate-400 text-sm">021-12345678</div>
+            <div class="text-slate-400 text-sm">021-87654321</div>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center">
+            <div
+              class="w-14 h-14 rounded-2xl bg-purple-600/20 flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="mail" class="w-7 h-7 text-purple-400"></i>
+            </div>
+            <div class="font-bold text-white mb-1">ایمیل</div>
+            <div class="text-slate-400 text-sm">info@techstore.ir</div>
+            <div class="text-slate-400 text-sm">support@techstore.ir</div>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center">
+            <div
+              class="w-14 h-14 rounded-2xl bg-green-600/20 flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="map-pin" class="w-7 h-7 text-green-400"></i>
+            </div>
+            <div class="font-bold text-white mb-1">آدرس</div>
+            <div class="text-slate-400 text-sm">تهران، خیابان ولیعصر</div>
+            <div class="text-slate-400 text-sm">پلاک ۱۰۲۳</div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 max-w-2xl mx-auto">
+          <h2 class="text-xl font-bold text-white mb-6">ارسال پیام</h2>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm text-slate-400 block mb-1">نام</label
+                ><input
+                  type="text"
+                  placeholder="نام شما"
+                  class="input w-full input-dark rounded-xl text-sm"
+                />
+              </div>
+              <div>
+                <label class="text-sm text-slate-400 block mb-1"
+                  >نام خانوادگی</label
+                ><input
+                  type="text"
+                  placeholder="نام خانوادگی"
+                  class="input w-full input-dark rounded-xl text-sm"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="text-sm text-slate-400 block mb-1">ایمیل</label
+              ><input
+                type="email"
+                placeholder="example@email.com"
+                class="input w-full input-dark rounded-xl text-sm"
+              />
+            </div>
+            <div>
+              <label class="text-sm text-slate-400 block mb-1">موضوع</label
+              ><select
+                class="select w-full bg-[#12121A] border-[#2A2A3E] text-slate-300 rounded-xl text-sm"
+              >
+                <option>انتخاب کنید...</option>
+                <option>پشتیبانی فنی</option>
+                <option>سوال درباره محصول</option>
+                <option>شکایت</option>
+                <option>پیشنهاد</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-sm text-slate-400 block mb-1">پیام</label
+              ><textarea
+                rows="4"
+                placeholder="پیام خود را بنویسید..."
+                class="textarea w-full input-dark rounded-xl text-sm resize-none"
+              ></textarea>
+            </div>
+            <button
+              class="btn btn-primary w-full rounded-xl gap-2"
+              onclick="showToast('پیام شما ارسال شد!')"
+            >
+              <i data-lucide="send" class="w-4 h-4"></i> ارسال پیام
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-[#12121A] border-t border-[#2A2A3E] mt-16">
+      <div class="container mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <div
+                class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center"
+              >
+                <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+              </div>
+              <span class="text-xl font-bold gradient-text">تک‌استور</span>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+              بهترین محصولات فناوری با قیمت منصفانه و ضمانت اصالت کالا.
+            </p>
+            <div class="flex gap-2">
+              <a
+                class="w-8 h-8 rounded-lg bg-[#1A1A26] flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-indigo-600/20 transition-all"
+                ><i data-lucide="instagram" class="w-4 h-4"></i></a
+              ><a
+                class="w-8 h-8 rounded-lg bg-[#1A1A26] flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-indigo-600/20 transition-all"
+                ><i data-lucide="twitter" class="w-4 h-4"></i></a
+              ><a
+                class="w-8 h-8 rounded-lg bg-[#1A1A26] flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-indigo-600/20 transition-all"
+                ><i data-lucide="linkedin" class="w-4 h-4"></i></a
+              ><a
+                class="w-8 h-8 rounded-lg bg-[#1A1A26] flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-indigo-600/20 transition-all"
+                ><i data-lucide="youtube" class="w-4 h-4"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-4 text-sm">محصولات</h3>
+            <ul class="space-y-2 text-sm text-slate-500">
+              <li>
+                <a href="shop.html" class="hover:text-indigo-400"
+                  >گوشی هوشمند</a
+                >
+              </li>
+              <li>
+                <a href="shop.html" class="hover:text-indigo-400"
+                  >ساعت هوشمند</a
+                >
+              </li>
+              <li>
+                <a href="shop.html" class="hover:text-indigo-400"
+                  >خانه هوشمند</a
+                >
+              </li>
+              <li>
+                <a href="shop.html" class="hover:text-indigo-400"
+                  >لوازم جانبی</a
+                >
+              </li>
+              <li>
+                <a href="shop.html" class="hover:text-indigo-400">تخفیف‌ها</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-4 text-sm">خدمات</h3>
+            <ul class="space-y-2 text-sm text-slate-500">
+              <li>
+                <a href="about.html" class="hover:text-indigo-400">درباره ما</a>
+              </li>
+              <li>
+                <a href="contact.html" class="hover:text-indigo-400"
+                  >تماس با ما</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-indigo-400 cursor-pointer">راهنمای خرید</a>
+              </li>
+              <li>
+                <a class="hover:text-indigo-400 cursor-pointer"
+                  >ضمانت و گارانتی</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-indigo-400 cursor-pointer"
+                  >سوالات متداول</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-4 text-sm">خبرنامه</h3>
+            <p class="text-slate-500 text-sm mb-3">
+              از آخرین تخفیف‌ها و محصولات با خبر شوید
+            </p>
+            <div class="flex gap-2">
+              <input
+                type="email"
+                placeholder="ایمیل شما"
+                class="input flex-1 input-dark rounded-xl text-xs"
+              /><button
+                class="btn btn-primary btn-sm rounded-xl"
+                onclick="showToast('ثبت شد!')"
+              >
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <div class="mt-4 space-y-2">
+              <div class="flex items-center gap-2 text-xs text-slate-500">
+                <i
+                  data-lucide="shield-check"
+                  class="w-3 h-3 text-green-400"
+                ></i>
+                نماد اعتماد
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-500">
+                <i data-lucide="lock" class="w-3 h-3 text-indigo-400"></i> درگاه
+                پرداخت امن
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-[#2A2A3E] mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <div class="text-slate-600 text-xs">
+            © ۱۴۰۳ تک‌استور. تمام حقوق محفوظ است.
+          </div>
+          <div class="flex gap-4 text-xs text-slate-600">
+            <a class="hover:text-slate-400 cursor-pointer">قوانین</a
+            ><a class="hover:text-slate-400 cursor-pointer">حریم خصوصی</a
+            ><a class="hover:text-slate-400 cursor-pointer">کوکی‌ها</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      }
+      function showToast(msg) {
+        const t = document.getElementById("toast");
+        document.getElementById("toast-msg").textContent = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 3000);
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
