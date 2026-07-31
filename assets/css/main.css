@@ -94,6 +94,7 @@ body {
     #0a0a0f;
 }
 
+
 /* Input styles */
 .input-dark {
   background: #12121a !important;
@@ -212,3 +213,36 @@ tr:hover td {
   background: #6366f1;
   border-color: #6366f1;
 }
+
+
+
+/* ۱. حالت پیش‌فرض موقع کلیک (وقتی فیلد خالی است) -> رنگ نیلی */
+.auth-input:focus:placeholder-shown {
+  border-color: #6366f1; /* رنگ indigo-500 */
+  box-shadow: 0 0 0 1px #6366f1;
+}
+
+/* ۲. وقتی کاربر شروع به تایپ کرده ولی اطلاعات غلط است (مثلا رمز زیر ۸ حرف یا موبایل ناقص) -> قرمز */
+.auth-input:not(:placeholder-shown):invalid {
+  border-color: #ef4444; /* رنگ red-500 */
+  box-shadow: 0 0 0 1px #ef4444;
+}
+
+/* تغییر رنگ آیکون در حالت غلط */
+.auth-input:not(:placeholder-shown):invalid + i {
+  color: #ef4444;
+}
+
+/* ۳. وقتی اطلاعات کاملاً صحیح وارد شد -> سبز */
+.auth-input:not(:placeholder-shown):valid {
+  border-color: #22c55e; /* رنگ green-500 */
+  box-shadow: 0 0 0 1px #22c55e;
+}
+
+/* سبز شدن آیکون در حالت صحیح */
+.auth-input:not(:placeholder-shown):valid + i {
+  color: #22c55e;
+}
+
+/* ۴. استایل برای چک‌باکس "مرا به خاطر بسپار" */
+/* وقتی تیک خورد، رنگ متن کنارش از خاکستری به سفید تغییر کند */

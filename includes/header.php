@@ -43,10 +43,7 @@
 
 <body class="min-h-screen">
     <!-- ===== TOAST ===== -->
-    <div id="toast" class="toast-custom">
-        <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
-        <span id="toast-msg">محصول اضافه شد</span>
-    </div>
+   <div id="toast-container" class="fixed bottom-5 right-5 flex flex-col-reverse gap-3 z-50 max-w-sm w-full "></div>
 
     <header class="sticky top-0 z-50 glass-card border-b border-[#2A2A3E]">
         <div class="container mx-auto px-4">
@@ -76,17 +73,24 @@
                     <a href="shop.php" class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400">
                         <i data-lucide="search" class="w-5 h-5"></i>
                     </a>
-                    <!-- Cart -->
-                    <a href="cart.php"
-                        class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400 relative">
-                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                        <span id="cart-badge"
-                            class="absolute -top-1 -left-1 w-5 h-5 bg-indigo-600 rounded-full text-xs flex items-center justify-center text-white badge-pulse">3</span>
-                    </a>
-                    <!-- User -->
-                    <a href="login.php" class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400">
-                        <i data-lucide="user" class="w-5 h-5"></i>
-                    </a>
+                    <?php if (false): ?>
+
+
+
+                        <!-- Cart -->
+                        <a href="cart.php"
+                            class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400 relative">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            <span id="cart-badge"
+                                class="absolute -top-1 -left-1 w-5 h-5 bg-indigo-600 rounded-full text-xs flex items-center justify-center text-white badge-pulse">3</span>
+                        </a>
+
+
+                    <?php else: ?>
+                        <a href="login.php" class="btn btn-ghost btn-circle btn-sm text-slate-400 hover:text-indigo-400">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </a>
+                    <?php endif; ?>
                     <!-- Mobile menu -->
                     <button class="btn btn-ghost btn-circle btn-sm text-slate-400 md:hidden"
                         onclick="toggleMobileMenu()">

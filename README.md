@@ -6,17 +6,17 @@ An online electronics store e-commerce website built with **HTML, CSS (Tailwind 
 
 | File | Page | Description |
 |------|------|-------------|
-| `index.html` | Home | Landing page with hero section, categories strip, featured products, and promo banner |
-| `shop.html` | Shop | Product listing with sidebar filters (category, brand, price, rating) and pagination |
-| `product.html` | Product Detail | Single product view with image variants, specs, reviews, add-to-cart, and quick buy |
-| `category.html` | Categories | Browse product categories (phones, watches, smart home) and subcategories |
-| `about.html` | About Us | Company information, team, stats, and values |
-| `contact.html` | Contact | Contact form with phone, email, address info and a message form |
-| `login.html` | Login | User login with social login buttons and email/password form |
-| `register.html` | Register | New account creation form with personal details |
-| `cart.html` | Shopping Cart | Cart items with quantity controls, delete function, coupon, and order summary |
-| `checkout.html` | Checkout | Multi-step checkout with shipping info, delivery method, payment, and order review |
-| `dashboard.html` | Dashboard | User account dashboard with overview stats, order history, wishlist, addresses, and profile settings |
+| `index.php` | Home | Landing page with hero section, categories strip, featured products, and promo banner |
+| `shop.php` | Shop | Product listing with sidebar filters (category, brand, price, rating) and pagination |
+| `product.php` | Product Detail | Single product view with image variants, specs, reviews, add-to-cart, and quick buy |
+| `category.php` | Categories | Browse product categories (phones, watches, smart home) and subcategories |
+| `about.php` | About Us | Company information, team, stats, and values |
+| `contact.php` | Contact | Contact form with phone, email, address info and a message form |
+| `login.php` | Login | User login with social login buttons and email/password form |
+| `register.php` | Register | New account creation form with personal details |
+| `cart.php` | Shopping Cart | Cart items with quantity controls, delete function, coupon, and order summary |
+| `checkout.php` | Checkout | Multi-step checkout with shipping info, delivery method, payment, and order review |
+| `dashboard.php` | Dashboard | User account dashboard with overview stats, order history, wishlist, addresses, and profile settings |
 
 ## Technologies Used
 
@@ -46,10 +46,10 @@ An online electronics store e-commerce website built with **HTML, CSS (Tailwind 
 ## How to Run
 
 1. Clone or download this repository
-2. Open any `.html` file in a browser (no server needed)
+2. Open any `.php` file in a browser (no server needed)
 
 ```
-file:///C:/Users/you/path/to/techNeon/index.html
+file:///C:/Users/you/path/to/techNeon/index.php
 ```
 
 All pages link to each other via standard `<a href="...">` — no JavaScript redirect required.
@@ -58,17 +58,17 @@ All pages link to each other via standard `<a href="...">` — no JavaScript red
 
 ```
 techNeon/
-├── index.html       (Home)
-├── shop.html        (Shop / Product listing)
-├── product.html     (Product detail)
-├── category.html    (Categories)
-├── about.html       (About us)
-├── contact.html     (Contact)
-├── login.html       (Login)
-├── register.html    (Register)
-├── cart.html        (Shopping cart)
-├── checkout.html    (Checkout)
-├── dashboard.html   (User dashboard)
+├── index.php       (Home)
+├── shop.php        (Shop / Product listing)
+├── product.php     (Product detail)
+├── category.php    (Categories)
+├── about.php       (About us)
+├── contact.php     (Contact)
+├── login.php       (Login)
+├── register.php    (Register)
+├── cart.php        (Shopping cart)
+├── checkout.php    (Checkout)
+├── dashboard.php   (User dashboard)
 └── README.md
 ```
 
